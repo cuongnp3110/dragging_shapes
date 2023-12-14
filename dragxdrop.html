@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dragxdrop.css">
+  <script src="metadata.js" defer></script>
+  <script src="dragxdrop.js" defer></script>
+</head>
+<body>
+    <div class="btn-mode-container" id="startMenu">
+      <h1>Select Difficulties</h1>
+      <button class="btn" id="btnEasy" onclick="changeLevel('easy')" value="easy">Easy (3x3)</button>
+      <button class="btn" id="btnMedium" onclick="changeLevel('medium')" value="medium">Medium (4x4)</button>
+      <button class="btn" id="btnHard" onclick="changeLevel('hard')" value="hard">Hard (5x5)</button>
+    </div>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closeWinningPopup()">&times;</span>
+        <p>You Win, go select another challenge!</p>
+        <button class="btn" onclick="closeWinningPopup()">Ok</button>
+      </div>
+    </div>
+
+    <div id="item">
+      <div class="shape-container" id="bottomShapeContainer">
+        <canvas id="bottomShape" width="100" height="200"></canvas>
+      </div>
+      <div class="shape-container" id="curveBottomRShapeContainer">
+        <canvas id="curveBottomRShape" width="200" height="200"></canvas>
+      </div>
+      <div class="shape-container" id="crescentRShapeContainer">
+        <canvas id="crescentRShape" width="150" height="200"></canvas>
+      </div>
+      <div class="shape-container" id="bottom2ShapeContainer">
+        <canvas id="bottom2Shape" width="100" height="300"></canvas>
+      </div>
+      <div class="shape-container" id="aslantRShapeContainer">
+        <canvas id="aslantRShape" width="200" height="200"></canvas>
+      </div>
+      <div class="shape-container" id="aslant2RShapeContainer">
+        <canvas id="aslant2RShape" width="200" height="300"></canvas>
+      </div>
+      <div class="shape-container">
+        <!-- <canvas id="aslant2RShape" width="200" height="300"></canvas> -->
+      </div>
+    </div>
+    
+    
+    <div id="playground">
+      <!-- <div id="template"></div> -->
+      <div id="template-container">
+        <img id="template" src="">
+      </div>
+      <div id="board"></div>
+      <div width="200" height="300"></div>
+    </div>
+
+    <div class="stat">
+      <div class="level">Level:&nbsp;</div>
+      <div id="level">1</div>
+      &nbsp;| &nbsp;
+      <div class="mode">Mode:&nbsp;</div>
+      <div id="mode">easy</div>
+      <!-- &nbsp;
+      <div class="score">Score:&nbsp;</div>
+      <div id="score">0</div> -->
+    </div>
+
+    <div class="btnGroup">
+      <button class="btn" id="btnReset" onclick="reset()">Reset</button>
+      <button class="btn" id="btnOpenMenu" onclick="openMenu()">Menu</button>
+      <button class="btn" id="btnCheckBoard" onclick="submit()">Submit</button>
+    </div>
+    </body>
+</html>
