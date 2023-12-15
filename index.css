@@ -197,5 +197,11 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
     width: auto;
-
+}
+.version{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    z-index: 100000;
 }
