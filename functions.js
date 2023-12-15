@@ -46,6 +46,7 @@ function reset() {
     }
   )
   level = 1;
+  document.getElementById('popupMenuWarning').style.display = 'none';
 }
 
 function reDrawNewLevel() {
@@ -57,6 +58,14 @@ function reDrawNewLevel() {
     resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top)
   }
   )
+}
+
+function openMenuWarningPopup() {
+  document.getElementById("popupMenuWarning").style.display = 'block';
+}
+
+function closeMenuWarningPopup() {
+  document.getElementById("popupMenuWarning").style.display = 'none';
 }
 
 function openMenu() {

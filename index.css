@@ -155,7 +155,7 @@ canvas {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     z-index: 99998;
-    width: 600px;
+    width: 680px;
 }
 .popup-content {
     text-align: center;

@@ -37,6 +37,13 @@
         <button class="btn" onclick="closeFailLevelPopup()">Ok</button>
       </div>
     </div>
+    <div class="popup" id="popupMenuWarning">
+      <div class="popup-content">
+        <p>This action will permanently reset all your game</p>
+        <button class="btn" onclick="openMenu()">Ok</button>
+        <button class="btn" onclick="closeMenuWarningPopup()">Cancel</button>
+      </div>
+    </div>
 
     <div id="item">
       <div class="shape-container" id="bottomShapeContainer">
@@ -85,7 +92,7 @@
 
     <div class="btnGroup">
       <button class="btn" id="btnReset" onclick="reset()">Reset</button>
-      <button class="btn" id="btnOpenMenu" onclick="openMenu()">Menu</button>
+      <button class="btn" id="btnOpenMenu" onclick="openMenuWarningPopup()">Menu</button>
       <button class="btn" id="btnCheckBoard" onclick="submit()">Submit</button>
     </div>
 
