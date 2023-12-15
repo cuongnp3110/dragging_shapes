@@ -1,3 +1,42 @@
+const boardComplexity = {
+    easy: 3,
+    medium: 4,
+    hard: 5
+}
+
+const shapeData = [
+    {
+        name: "bottomShape",
+        coordinateBalance: [1, 0],
+        color: "#ff6384"
+    },
+    {
+        name: "curveBottomRShape",
+        coordinateBalance: [1, 1],
+        color: "#36a2eb"
+    },
+    {
+        name: "crescentRShape",
+        coordinateBalance: [1, 0],
+        color: "#ffce56"
+    },
+    {
+        name: "bottom2Shape",
+        coordinateBalance: [2, 0],
+        color: "#9966ff"
+    },
+    {
+        name: "aslantRShape",
+        coordinateBalance: [1, 1],
+        color: "#4bc0c0"
+    },
+    {
+        name: "aslant2RShape",
+        color: "#FF7633"
+    },
+]
+
+
 const templateData = [
     {
         mode: "easy",
@@ -26,7 +65,12 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 1]
                     }
-                ]
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["aslantRShape", "crescentRShape"],
+                ],
+
             },
             {
                 level: 2,
@@ -52,7 +96,13 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 1]
                     }
-                ]
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["curveBottomRShape", "bottomShape"],
+                    ["crescentRShape", "bottomShape"],
+                    ["bottomShape", "aslantRShape"],
+                ],
             },
         ]
     },
@@ -83,7 +133,13 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 2]
                     }
-                ]
+                ],
+                specialties: [
+                    ["bottomShape", "crescentRShape"],
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["bottom2Shape", "aslantRShape"],
+                    ["aslantRShape", "bottomShape"],
+                ],
             },
             {
                 level: 2,
@@ -109,7 +165,14 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 0]
                     }
-                ]
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["crescentRShape", "bottomShape"],
+                    ["crescentRShape", "curveBottomRShape"],
+                    ["bottom2Shape", "aslantRShape"],
+                    ["aslantRShape", "bottomShape"],
+                ],
             },
         ]
     },
@@ -140,7 +203,13 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 2]
                     }
-                ]
+                ],
+                specialties: [
+                    ["crescentRShape", "bottom2Shape"],
+                    ["crescentRShape", "curveBottomRShape"],
+                    ["aslantRShape", "bottom2Shape"],
+                    ["aslantRShape", "bottomShape"],
+                ],
             },
             {
                 level: 2,
@@ -166,8 +235,69 @@ const templateData = [
                         name: "aslantRShape",
                         coordinate: [1, 1]
                     }
-                ]
+                ],
+                specialties: [
+                    ["curveBottomRShape", "aslantRShape"],
+                    ["crescentRShape", "bottomShape"],
+                    ["crescentRShape", "curveBottomRShape"],
+                    ["aslantRShape", "bottom2Shape"],
+                ],
             },
         ]
     },
 ];
+
+
+const shapeRect = [
+    {
+      name: "bottomShape",
+      rect: {
+        top: getRectTop("bottomShape"),
+        left: getRectLeft("bottomShape"),
+      }
+    },
+    {
+      name: "curveBottomRShape",
+      rect: {
+        top: getRectTop("curveBottomRShape"),
+        left: getRectLeft("curveBottomRShape"),
+      }
+    },
+    {
+      name: "crescentRShape",
+      rect: {
+        top: getRectTop("crescentRShape"),
+        left: getRectLeft("crescentRShape"),
+      }
+    },
+    {
+      name: "bottom2Shape",
+      rect: {
+        top: getRectTop("bottom2Shape"),
+        left: getRectLeft("bottom2Shape"),
+      }
+    },
+    {
+      name: "aslantRShape",
+      rect: {
+        top: getRectTop("aslantRShape"),
+        left: getRectLeft("aslantRShape"),
+      }
+    },
+    {
+      name: "aslant2RShape",
+      rect: {
+        top: getRectTop("aslant2RShape"),
+        left: getRectLeft("aslant2RShape"),
+      }
+    }
+  ]
+
+function getRectTop(shape) {
+    return document.getElementById(shape).getBoundingClientRect().top;
+}
+function getRectLeft(shape) {
+    return document.getElementById(shape).getBoundingClientRect().left;
+}
+
+const boardCells = [];

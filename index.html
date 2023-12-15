@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="dragxdrop.css">
+  <link rel="stylesheet" href="index.css">
   <script src="metadata.js" defer></script>
-  <script src="dragxdrop.js" defer></script>
+  <script src="drawing.js" defer></script>
+  <script src="functions.js" defer></script>
 </head>
 <body>
     <div class="btn-mode-container" id="startMenu">
@@ -20,6 +21,20 @@
         <span class="close" onclick="closeWinningPopup()">&times;</span>
         <p>You Win, go select another challenge!</p>
         <button class="btn" onclick="closeWinningPopup()">Ok</button>
+      </div>
+    </div>
+
+    <div class="popup" id="popupPassLevel">
+      <div class="popup-content">
+        <p>Correct!</p>
+        <button class="btn" onclick="closePassLevelPopup()">Next Game</button>
+      </div>
+    </div>
+
+    <div class="popup" id="popupFailLevel">
+      <div class="popup-content">
+        <p>Incorrect! Try another combination</p>
+        <button class="btn" onclick="closeFailLevelPopup()">Ok</button>
       </div>
     </div>
 
