@@ -84,19 +84,20 @@ function drawAslantRShape() {
 function drawAslant2RShape() {
   const ctx = aslant2RShape.getContext('2d');
   ctx.beginPath();
-  ctx.arc(aslant2RShape.width / 4, aslant2RShape.height / 4, 25, 0, 2 * Math.PI);
-  ctx.arc((aslant2RShape.width / 4) * 3, (aslant2RShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(aslant2RShape.width / 4, aslant2RShape.height / 6, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2RShape.width / 4) * 3, (aslant2RShape.height / 6) * 5, 25, 0, 2 * Math.PI);
 
   ctx.closePath();
-  ctx.fillStyle = '#4bc0c0';
+  ctx.fillStyle = '#FF7633';
   ctx.fill();
   // ctx.fillRect(25, 50, 50, 100);
 
   //Trigonometric
-  ctx.rotate(Math.PI - (90 + Math.atan(200 / 100) * (180 / Math.PI)));
-
+  ctx.rotate(1.108);
+  // console.log(Math.atan(200 / 100) * (180 / Math.PI));
+  
   //Pythago segment
-  ctx.fillRect(Math.sqrt(((aslant2RShape.width / 4) ** 2) + ((aslant2RShape.height / 4) ** 2)), -25, Math.sqrt(((aslant2RShape.width / 2) ** 2) + ((aslant2RShape.height / 2) ** 2)), 50);
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -47.6, Math.sqrt((100**2) + (200**2)), 50);
 
   // const a = 200; // Cạnh cao
   // const b = 100; // Cạnh đáy
@@ -108,7 +109,7 @@ function drawAslant2RShape() {
   // const angleC = Math.atan(a / b) * (180 / Math.PI);
 
   // console.log(`Cạnh huyền c: ${c}`);
-  console.log(Math.PI - (90 + Math.atan(200 / 100) * (180 / Math.PI)));
+  // console.log(Math.PI - (90 + Math.atan(200 / 100) * (180 / Math.PI)));
 
 }
 
@@ -140,5 +141,5 @@ drawCurveBottomRShape();
 drawCrescentRShape();
 drawBottom2Shape();
 drawAslantRShape();
-// drawAslant2RShape();
+drawAslant2RShape();
 createBoard();

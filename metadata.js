@@ -32,6 +32,7 @@ const shapeData = [
     },
     {
         name: "aslant2RShape",
+        coordinateBalance: [2, 1],
         color: "#FF7633"
     },
 ]
@@ -67,6 +68,7 @@ const templateData = [
                     }
                 ],
                 specialties: [
+                    // [0] is standing under [1], [1] is in front of [0]
                     ["curveBottomRShape", "bottom2Shape"],
                     ["aslantRShape", "crescentRShape"],
                 ],
@@ -100,8 +102,46 @@ const templateData = [
                 specialties: [
                     ["curveBottomRShape", "bottom2Shape"],
                     ["curveBottomRShape", "bottomShape"],
-                    ["crescentRShape", "bottomShape"],
+                    ["crescentRShape", "aslantRShape"],
                     ["bottomShape", "aslantRShape"],
+                ],
+            },
+            {
+                level: 3,
+                url: "easy/e3.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [1, 0]
+                    }
+                ],
+                specialties: [
+                    ["bottomShape", "crescentRShape"],
+                    ["curveBottomRShape", "bottomShape"],
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["bottomShape", "crescentRShape"],
+                    ["aslantRShape", "bottomShape"],
+                    ["aslant2RShape", "aslantRShape"],
                 ],
             },
         ]

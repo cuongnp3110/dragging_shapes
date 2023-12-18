@@ -45,7 +45,7 @@ function reset() {
       resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top)
     }
   )
-  level = 1;
+  // level = 1;
   document.getElementById('popupMenuWarning').style.display = 'none';
 }
 
@@ -70,6 +70,7 @@ function closeMenuWarningPopup() {
 
 function openMenu() {
   reset();
+  level = 1;
   document.getElementById("startMenu").style.display = '';
 }
 
