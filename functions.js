@@ -42,7 +42,8 @@ function reset() {
       document.getElementById(shapeRect.name).remove();
       document.getElementById(shapeRect.name + "Container").appendChild(shapeTag);
       console.log(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
-      resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top)
+      resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
+      shapeTag.classList.remove("dropped");
     }
   )
   // level = 1;
