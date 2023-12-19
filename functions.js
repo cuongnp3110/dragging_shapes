@@ -7,8 +7,6 @@ let zIndex = 100;
 let level = 1;
 let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
 
-
-
 function openWinningPopup() {
   document.getElementById('popup').style.display = 'block';
 }
@@ -22,8 +20,6 @@ function setTemplate() {
   document.getElementById('template').src = templateData.find(e => e.mode === mode).templates[level - 1].url;
   document.getElementById('mode').innerText = mode;
 }
-
-
 
 function changeLevel(modeVal) {
   mode = modeVal;
@@ -46,7 +42,6 @@ function reset() {
       shapeTag.classList.remove("dropped");
     }
   )
-  // level = 1;
   document.getElementById('popupMenuWarning').style.display = 'none';
 }
 
@@ -56,7 +51,8 @@ function reDrawNewLevel() {
     const shapeTag = document.getElementById(shapeRect.name);
     document.getElementById(shapeRect.name).remove();
     document.getElementById(shapeRect.name + "Container").appendChild(shapeTag);
-    resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top)
+    resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
+    shapeTag.classList.remove("dropped");
   }
   )
 }
@@ -82,32 +78,28 @@ function tutorial() {
 }
 
 function submit() {
-  // console.log(level, templateData.find(e => e.mode === mode).templates.length);
   const droppedElements = document.querySelectorAll(".dropped");
   let flag = true;
   const filterMode = templateData.find(e => e.mode === mode).templates[level - 1];
-
   if (droppedElements.length == filterMode.shapes.length) {
     let indexArray = [];
     droppedElements.forEach(elem => {
       let arr = [];
-      const filterShape = filterMode.shapes.find(e => e.name === elem.id);
       arr.push(elem.id);
       arr.push(parseInt(window.getComputedStyle(elem).getPropertyValue('z-index')));
       indexArray.push(arr);
+      const filterShape = filterMode.shapes.find(e => e.name === elem.id);
       if (filterShape.coordinate[1] != elem.parentElement.dataset.row || filterShape.coordinate[0] != elem.parentElement.dataset.col) {
+        console.log(1);
         flag = false;
       };
     });
     console.log(indexArray);
     filterMode.specialties.forEach(elem => {
       console.log(findIndexBindValue(indexArray, elem[0]), findIndexBindValue(indexArray, elem[1]));
-      console.log();
       if(findIndexBindValue(indexArray, elem[0]) >= findIndexBindValue(indexArray, elem[1])) flag = false;
     })
-  } else {
-    flag = false;
-  }
+  } else flag = false;
   if (flag) {
     if (level == templateData.find(e => e.mode === mode).templates.length) {
       openWinningPopup(); 
@@ -116,9 +108,7 @@ function submit() {
       level++;
       document.getElementById('popupPassLevel').style.display = "block";
     }
-  } else {
-    document.getElementById('popupFailLevel').style.display = "block";
-  }
+  } else document.getElementById('popupFailLevel').style.display = "block";
 
 }
 
@@ -157,8 +147,8 @@ function startDrag(e) {
   draggedElement = e.target;
   draggedElement.style.position = 'absolute';
   pickedShape = e.target.id;
-  elemTop = draggedElement.offsetTop;
-  elemLeft = draggedElement.offsetLeft;
+  // elemTop = draggedElement.offsetTop;
+  // elemLeft = draggedElement.offsetLeft;
   document.getElementById(pickedShape).style.zIndex = zIndex;
   zIndex++;
   console.log(zIndex);

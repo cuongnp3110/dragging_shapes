@@ -112,7 +112,7 @@ const templateData = [
                 shapes: [
                     {
                         name: "bottomShape",
-                        coordinate: [[1, 0], [1, 1]]
+                        coordinate: [1, 0]
                     },
                     {
                         name: "curveBottomRShape",
@@ -170,7 +170,7 @@ const templateData = [
                     }
                 ],
                 specialties: [
-                    ["curveBottomRShape", "aslantRShape"],
+                    ["curveBottomRShape", "bottom2Shape"],
                     ["crescentRShape", "bottom2Shape"],
                     ["aslantRShape", "bottom2Shape"],
                     ["aslant2RShape", "crescentRShape"],
@@ -283,6 +283,113 @@ const templateData = [
                     ["aslantRShape", "bottomShape"],
                 ],
             },
+            {
+                level: 3,
+                url: "medium/m3.png",
+                shapes: [
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [0, 1]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [2, 1]
+                    }
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["crescentRShape", "bottom2Shape"],
+                    ["aslantRShape", "bottom2Shape"],
+                    ["aslantRShape", "aslant2RShape"],
+                ],
+            },
+            {
+                level: 4,
+                url: "medium/m4.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [2, 1]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [1, 2]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [2, 2]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [1, 0]
+                    }
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottom2Shape"],
+                    ["curveBottomRShape", "crescentRShape"],
+                    ["crescentRShape", "bottomShape"],
+                    ["bottom2Shape", "aslant2RShape"],
+                    ["aslantRShape", "bottomShape"],
+                    ["aslant2RShape", "aslantRShape"],
+                ],
+            },
+            {
+                level: 5,
+                url: "medium/m5.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [2, 1]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [1, 2]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [1, 1]
+                    }
+                ],
+                specialties: [
+                    ["bottomShape", "aslantRShape"],
+                    ["curveBottomRShape", "aslant2RShape"],
+                    ["crescentRShape", "curveBottomRShape"],
+                    ["aslantRShape", "bottom2Shape"],
+                    ["aslant2RShape", "bottomShape"],
+                ],
+            },
         ]
     },
     {
@@ -350,6 +457,80 @@ const templateData = [
                     ["crescentRShape", "bottomShape"],
                     ["crescentRShape", "curveBottomRShape"],
                     ["aslantRShape", "bottom2Shape"],
+                ],
+            },
+            {
+                level: 3,
+                url: "hard/h3.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [3, 2]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [2, 2]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [2, 1]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [2, 1]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [2, 2]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [2, 1]
+                    }
+                ],
+                specialties: [
+                    ["aslant2RShape", "aslantRShape"],
+                    ["aslantRShape", "curveBottomRShape"],
+                    ["curveBottomRShape", "crescentRShape"],
+                    ["curveBottomRShape", "bottomShape"],
+                    ["crescentRShape", "bottom2Shape"],
+                ],
+            },
+            {
+                level: 4,
+                url: "hard/h4.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [2, 1]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [1, 0]
+                    }
+                ],
+                specialties: [
+                    ["aslant2RShape", "bottom2Shape"],
+                    ["curveBottomRShape", "aslant2RShape"],
+                    ["aslantRShape", "curveBottomRShape"],
+                    ["crescentRShape", "aslantRShape"],
+                    ["bottomShape", "aslant2RShape"],
                 ],
             },
         ]
