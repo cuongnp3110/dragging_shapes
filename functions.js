@@ -101,6 +101,8 @@ function submit() {
     })
   } else flag = false;
   if (flag) {
+    var audio = new Audio('assets/win.mp3');
+    audio.play();
     if (level == templateData.find(e => e.mode === mode).templates.length) {
       openWinningPopup(); 
       zIndex = 100;
@@ -108,8 +110,11 @@ function submit() {
       level++;
       document.getElementById('popupPassLevel').style.display = "block";
     }
-  } else document.getElementById('popupFailLevel').style.display = "block";
-
+  } else {
+    var audio = new Audio('assets/incorrect.mp3');
+    audio.play();
+    document.getElementById('popupFailLevel').style.display = "block";
+  }
 }
 
 function findIndexBindValue(arr, targetElement) {
@@ -142,7 +147,6 @@ function getDataForShape(e) {
     if (shape.name === e) return shape.coordinateBalance;
   }
 }
-
 function startDrag(e) {
   draggedElement = e.target;
   draggedElement.style.position = 'absolute';
@@ -152,6 +156,8 @@ function startDrag(e) {
   document.getElementById(pickedShape).style.zIndex = zIndex;
   zIndex++;
   console.log(zIndex);
+  var audio = new Audio('assets/click.mp3');
+  audio.play();
 }
 
 function drag(e) {
@@ -183,6 +189,8 @@ function endDrag() {
         // Append the dragged element to the cell
         cell.appendChild(draggedElement);
         draggedElement.classList.add("dropped");
+        var audio = new Audio('assets/click.wav');
+        audio.play();
       } else {
         console.log(2);
         draggedElement.style.position = 'absolute';
@@ -233,4 +241,14 @@ document.addEventListener('touchmove', (e) => {
   drag(e.touches[0]);
 });
 
+document.addEventListener('click', function() {
+  var audio = new Audio('assets/click.mp3');
+  audio.play();
+});
+
 document.addEventListener('touchend', endDrag);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var backgroundMusic = document.getElementById('backgroundMusic');
+  backgroundMusic.play();
+});
