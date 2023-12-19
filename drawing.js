@@ -90,27 +90,10 @@ function drawAslant2RShape() {
   ctx.closePath();
   ctx.fillStyle = '#FF7633';
   ctx.fill();
-  // ctx.fillRect(25, 50, 50, 100);
-
   //Trigonometric
   ctx.rotate(1.108);
-  // console.log(Math.atan(200 / 100) * (180 / Math.PI));
-  
   //Pythago segment
   ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -47.6, Math.sqrt((100**2) + (200**2)), 50);
-
-  // const a = 200; // Cạnh cao
-  // const b = 100; // Cạnh đáy
-
-  // // Tính cạnh huyền c
-  // const c = Math.sqrt(a**2 + b**2);
-
-  // // Tính góc C (đổi từ radian sang độ)
-  // const angleC = Math.atan(a / b) * (180 / Math.PI);
-
-  // console.log(`Cạnh huyền c: ${c}`);
-  // console.log(Math.PI - (90 + Math.atan(200 / 100) * (180 / Math.PI)));
-
 }
 
 function createBoard(complexity) {

@@ -10,38 +10,43 @@
 </head>
 <body>
     <div class="btn-mode-container" id="startMenu">
-      <h1>Select Difficulties</h1>
-      <button class="btn" id="btnEasy" onclick="changeLevel('easy')" value="easy">Easy (3x3)</button>
-      <button class="btn" id="btnMedium" onclick="changeLevel('medium')" value="medium">Medium (4x4)</button>
-      <button class="btn" id="btnHard" onclick="changeLevel('hard')" value="hard">Hard (5x5)</button>
+      <h1>CHỌN ĐỘ KHÓ</h1>
+      <button class="btn" id="btnTutor" onclick="tutorial()">Hướng dẫn</button>
+      <button class="btn" id="btnEasy" onclick="changeLevel('dễ')" value="dễ">Dễ (3x3)</button>
+      <button class="btn" id="btnMedium" onclick="changeLevel('trung bình')" value="trung bình">Trung bình (4x4)</button>
+      <button class="btn" id="btnHard" onclick="changeLevel('khó')" value="khó">Khó (5x5)</button>
+    </div>
+
+    <div class="tutor" id="tutor">
+      <button class="btnTutor" onclick="openMenu()">Đã xem xong</button>
     </div>
 
     <div class="popup" id="popup">
       <div class="popup-content">
         <span class="close" onclick="closeWinningPopup()">&times;</span>
-        <p>You Win, go select another challenge!</p>
+        <p>Bạn đã chiến thắng, chuyển sang chế độ khó hơn để tăng sự thử thách nào!</p>
         <button class="btn" onclick="closeWinningPopup()">Ok</button>
       </div>
     </div>
 
     <div class="popup" id="popupPassLevel">
       <div class="popup-content">
-        <p>Correct!</p>
-        <button class="btn" onclick="closePassLevelPopup()">Next Game</button>
+        <p>Đáp án đúng!</p>
+        <button class="btn" onclick="closePassLevelPopup()">Màn tiếp theo</button>
       </div>
     </div>
 
     <div class="popup" id="popupFailLevel">
       <div class="popup-content">
-        <p>Incorrect! Try another combination</p>
+        <p>Sai rồi! Hãy thử sắp xếp lại kiểu khác</p>
         <button class="btn" onclick="closeFailLevelPopup()">Ok</button>
       </div>
     </div>
     <div class="popup" id="popupMenuWarning">
       <div class="popup-content">
-        <p>This action will permanently reset all your game</p>
+        <p>Thoát ra menu chính sẽ reset toàn bộ quá trình chơi của bạn</p>
         <button class="btn" onclick="openMenu()">Ok</button>
-        <button class="btn" onclick="closeMenuWarningPopup()">Cancel</button>
+        <button class="btn" onclick="closeMenuWarningPopup()">Hủy</button>
       </div>
     </div>
 
@@ -82,19 +87,19 @@
     </div>
 
     <div class="statLevel">
-      <div class="level">Level:&nbsp;</div>
+      <div class="level">Màn:&nbsp;</div>
       <div id="level">1</div>
     </div>
 
     <div class="statMode">
-      <div class="mode">Mode:&nbsp;</div>
-      <div id="mode">easy</div>
+      <div class="mode">Độ khó:&nbsp;</div>
+      <div id="mode"></div>
     </div>
 
     <div class="btnGroup">
       <button class="btn" id="btnReset" onclick="reset()">Reset</button>
       <button class="btn" id="btnOpenMenu" onclick="openMenuWarningPopup()">Menu</button>
-      <button class="btn" id="btnCheckBoard" onclick="submit()">Submit</button>
+      <button class="btn" id="btnCheckBoard" onclick="submit()">Nộp</button>
     </div>
 
     <!-- HH:MM DD:MM:YYYY -->

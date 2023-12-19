@@ -5,7 +5,7 @@ let elemTop, elemLeft;
 let pickedShape;
 let zIndex = 100;
 let level = 1;
-let mode = complexity == 3 ? "easy" : complexity == 4 ? "medium" : "hard";
+let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
 
 
 
@@ -27,7 +27,7 @@ function setTemplate() {
 
 function changeLevel(modeVal) {
   mode = modeVal;
-  complexity = mode == "easy" ? 3 : mode == "medium" ? 4 : 5;
+  complexity = mode == "dễ" ? 3 : mode == "trung bình" ? 4 : 5;
   setTemplate();
   createBoard(complexity);
   document.getElementById('template').src = templateData.find(e => e.mode === mode).templates[level - 1].url;
@@ -73,6 +73,12 @@ function openMenu() {
   reset();
   level = 1;
   document.getElementById("startMenu").style.display = '';
+  document.getElementById("tutor").style.display = 'none';
+}
+
+function tutorial() {
+  document.getElementById("tutor").style.display = 'flex';
+  document.getElementById("tutor").style.zIndex = 100000;
 }
 
 function submit() {
@@ -86,15 +92,10 @@ function submit() {
     droppedElements.forEach(elem => {
       let arr = [];
       const filterShape = filterMode.shapes.find(e => e.name === elem.id);
-      const templateRow = filterShape.coordinate[1];
-      const templateCol = filterShape.coordinate[0];
-      // console.log(elem.id, templateRow, templateCol, elem.parentElement.dataset.row, elem.parentElement.dataset.col);
       arr.push(elem.id);
       arr.push(parseInt(window.getComputedStyle(elem).getPropertyValue('z-index')));
       indexArray.push(arr);
-
-      // check shapes coordinate
-      if (templateRow != elem.parentElement.dataset.row || templateCol != elem.parentElement.dataset.col) {
+      if (filterShape.coordinate[1] != elem.parentElement.dataset.row || filterShape.coordinate[0] != elem.parentElement.dataset.col) {
         flag = false;
       };
     });
@@ -110,6 +111,7 @@ function submit() {
   if (flag) {
     if (level == templateData.find(e => e.mode === mode).templates.length) {
       openWinningPopup(); 
+      zIndex = 100;
     } else {
       level++;
       document.getElementById('popupPassLevel').style.display = "block";

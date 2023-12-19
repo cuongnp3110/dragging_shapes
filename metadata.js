@@ -40,7 +40,7 @@ const shapeData = [
 
 const templateData = [
     {
-        mode: "easy",
+        mode: "dễ",
         templates: [
             {
                 level: 1,
@@ -112,7 +112,7 @@ const templateData = [
                 shapes: [
                     {
                         name: "bottomShape",
-                        coordinate: [1, 0]
+                        coordinate: [[1, 0], [1, 1]]
                     },
                     {
                         name: "curveBottomRShape",
@@ -144,10 +144,79 @@ const templateData = [
                     ["aslant2RShape", "aslantRShape"],
                 ],
             },
+            {
+                level: 4,
+                url: "easy/e4.png",
+                shapes: [
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [1, 1]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [1, 0]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [1, 0]
+                    }
+                ],
+                specialties: [
+                    ["curveBottomRShape", "aslantRShape"],
+                    ["crescentRShape", "bottom2Shape"],
+                    ["aslantRShape", "bottom2Shape"],
+                    ["aslant2RShape", "crescentRShape"],
+                ],
+            },
+            {
+                level: 5,
+                url: "easy/e5.png",
+                shapes: [
+                    {
+                        name: "bottomShape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "curveBottomRShape",
+                        coordinate: [0, 1]
+                    },
+                    {
+                        name: "crescentRShape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "bottom2Shape",
+                        coordinate: [0, 0]
+                    },
+                    {
+                        name: "aslantRShape",
+                        coordinate: [0, 1]
+                    },
+                    {
+                        name: "aslant2RShape",
+                        coordinate: [0, 0]
+                    }
+                ],
+                specialties: [
+                    ["curveBottomRShape", "bottomShape"],
+                    ["crescentRShape", "aslantRShape"],
+                    ["bottom2Shape", "curveBottomRShape"],
+                    ["aslantRShape", "bottomShape"],
+                    ["aslant2RShape", "crescentRShape"],
+                ],
+            },
         ]
     },
     {
-        mode: "medium",
+        mode: "trung bình",
         templates: [
             {
                 level: 1,
@@ -217,7 +286,7 @@ const templateData = [
         ]
     },
     {
-        mode: "hard",
+        mode: "khó",
         templates: [
             {
                 level: 1,

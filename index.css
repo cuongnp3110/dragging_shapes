@@ -4,7 +4,7 @@ body {
     display: flex;
     height: 100vh;
     background-color: azure;
-    font-family: 'Comic Sans MS';
+    font-family: 'Pacifico', monospace;
     background-image: url("assets/bg.jpg");
     background-size: 100% 100%;
     /* zoom: 80%; */
@@ -75,7 +75,7 @@ canvas {
     position: absolute;
     width: 40vw;
     height: 50px;
-    top: 57%;
+    top: 57.5%;
     left: 51%;
     font-size: 40px;
     justify-content: right;
@@ -85,15 +85,16 @@ canvas {
     border-bottom: 5px solid rgb(255, 192, 114);
     border-left: 5px solid rgb(255, 192, 114);
     background-color: bisque;
-    border-bottom-left-radius: 10px ;
+    border-bottom-left-radius: 20px ;
     display: flex;
     position: absolute;
-    width: 230px;
-    height: 62px;
+    width: auto;
+    height: 42px;
+    padding: 5px 20px;
     top: 0;
     right: 0;
-    font-size: 40px;
-    justify-content: right;
+    font-size: 28px;
+    justify-content: center;
 }
 .btnGroup{
     display: flex;
@@ -169,6 +170,8 @@ canvas {
     align-items: center;
     background-color: antiquewhite;
     z-index: 99999;
+    background-image: url(assets/menubg.jpg);
+    background-size: 100% 100%;
 }
 .popup {
     display: none;
@@ -197,26 +200,24 @@ canvas {
     font-size: 20px;
     cursor: pointer;
 }
-#btnEasy{
+
+#btnTutor, #btnEasy, #btnMedium, #btnHard{
     width: 200px;
     height: 100px;
-    background-color: #4CAF50;
     font-size: 26px;
     color: white;
+}
+#btnTutor{
+    background-color:rgb(116, 143, 143);
+}
+#btnEasy{
+    background-color: #4CAF50;
 }
 #btnMedium{
-    width: 200px;
-    height: 100px;
-    background-color: #FFC107 ;
-    font-size: 26px;
-    color: white;
+    background-color: #FFC107;
 }
 #btnHard{
-    width: 200px;
-    height: 100px;
     background-color: #FF5722 ;
-    font-size: 26px;
-    color: white;
 }
 .btn-mode-container>h1{
     position: absolute;
@@ -232,3 +233,51 @@ canvas {
     padding: 10px;
     z-index: 100000;
 }
+.tutor{
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    background-image: url(assets/tutor.jpg);
+    background-size: 100% 100%;
+}
+
+.btnTutor {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* CSS cho hiệu ứng nhấp nháy */
+  .btnTutor:hover {
+    background-color: #2980b9;
+  }
+  
+  /* CSS cho hiệu ứng nhấp nháy sáng */
+  /* .btnTutor:active {
+    animation: pulse 0.3s;
+  } */
+  
+  /* Animation keyframes */
+  /* @keyframes pulse {
+    0% {
+      background-color: #3498db;
+    }
+    50% {
+      background-color: #2980b9;
+    }
+    100% {
+      background-color: #3498db;
+    }
+  } */
