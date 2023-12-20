@@ -4,11 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="metadata.js" defer></script>
   <script src="drawing.js" defer></script>
   <script src="functions.js" defer></script>
 </head>
 <body>
+
+    <!-- <div class="icon">
+      <i class="material-icons" onclick="offMusic()">volume_up</i>
+      <i class="material-icons" onclick="onMusic()">volume_off</i>
+    </div> -->
+
     <div class="btn-mode-container" id="startMenu">
       <h1>CHỌN ĐỘ KHÓ</h1>
       <button class="btn" id="btnTutor" onclick="tutorial()">Hướng dẫn</button>
@@ -99,7 +106,7 @@
       <button class="btn" id="btnCheckBoard" onclick="submit()">Nộp</button>
     </div>
 
-    <audio id="backgroundMusic" loop>
+    <audio id="backgroundMusic" loop autoplay="true">
       <source src="assets/theme.mp3" type="audio/mp3">
     </audio>
 

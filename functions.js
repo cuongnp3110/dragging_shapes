@@ -89,10 +89,16 @@ function submit() {
       arr.push(parseInt(window.getComputedStyle(elem).getPropertyValue('z-index')));
       indexArray.push(arr);
       const filterShape = filterMode.shapes.find(e => e.name === elem.id);
-      if (filterShape.coordinate[1] != elem.parentElement.dataset.row || filterShape.coordinate[0] != elem.parentElement.dataset.col) {
-        console.log(1);
+      try {
+        if (filterShape.coordinate[1] != elem.parentElement.dataset.row || filterShape.coordinate[0] != elem.parentElement.dataset.col) {
+          console.log(1);
+          flag = false;
+        };
+      } catch (error) {
+        console.log(error);
         flag = false;
-      };
+      }
+      
     });
     console.log(indexArray);
     filterMode.specialties.forEach(elem => {
@@ -176,7 +182,7 @@ function endDrag() {
     if (cell) {
       const row = cell.dataset.row;
       const col = cell.dataset.col;
-      // console.log(parseInt(row) + getDataForShape(pickedShape)[0], complexity);
+      
       // Cover cases that shape stay some of it part out board
       if (parseInt(row) + getDataForShape(pickedShape)[0] < complexity && parseInt(col) + getDataForShape(pickedShape)[1] < complexity) {
         console.log(`Dropped at row: ${row}, col: ${col}`);
@@ -192,7 +198,7 @@ function endDrag() {
         var audio = new Audio('assets/click.wav');
         audio.play();
       } else {
-        console.log(2);
+        
         draggedElement.style.position = 'absolute';
         draggedElement.style.left = elemLeft + 'px';
         draggedElement.style.top = elemTop + 'px';
@@ -248,7 +254,11 @@ document.addEventListener('click', function() {
 
 document.addEventListener('touchend', endDrag);
 
-document.addEventListener('DOMContentLoaded', function() {
-  var backgroundMusic = document.getElementById('backgroundMusic');
-  backgroundMusic.play();
+let m = 0;
+document.addEventListener('click', function() {
+  if(m == 0){
+    var backgroundMusic = document.getElementById('backgroundMusic');
+    backgroundMusic.play();
+    m = 1;
+  }
 });
