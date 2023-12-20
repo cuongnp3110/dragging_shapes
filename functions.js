@@ -43,6 +43,8 @@ function reset() {
     }
   )
   document.getElementById('popupMenuWarning').style.display = 'none';
+  var audio = new Audio('assets/reset.mp3');
+  audio.play();
 }
 
 function reDrawNewLevel() {
