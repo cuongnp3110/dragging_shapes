@@ -33,6 +33,8 @@ function changeLevel(modeVal) {
 }
 
 function reset() {
+  var audio = new Audio('assets/reset.mp3');
+  audio.play();
   shapeRect.forEach(shapeRect => {
       const shapeTag = document.getElementById(shapeRect.name);
       document.getElementById(shapeRect.name).remove();
@@ -43,8 +45,7 @@ function reset() {
     }
   )
   document.getElementById('popupMenuWarning').style.display = 'none';
-  var audio = new Audio('assets/reset.mp3');
-  audio.play();
+  
 }
 
 function reDrawNewLevel() {
@@ -267,3 +268,17 @@ document.addEventListener('click', function() {
     m = 1;
   }
 });
+
+function offMusic(){
+  var backgroundMusic = document.getElementById('backgroundMusic');
+  backgroundMusic.pause();
+  document.getElementById('v_on').style.display = 'block';
+  document.getElementById('v_off').style.display = 'none';
+}
+
+function onMusic(){
+  var backgroundMusic = document.getElementById('backgroundMusic');
+  backgroundMusic.play();
+  document.getElementById('v_on').style.display = 'none';
+  document.getElementById('v_off').style.display = 'block';
+}

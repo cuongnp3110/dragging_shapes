@@ -245,5 +245,12 @@ canvas {
   }
 
   .icon{
+    position: absolute;
+    top: 10px;
+    left: 10px;
     z-index: 100001;
+    cursor: pointer;
+  }
+  #v_on{
+    display: none;
   }
