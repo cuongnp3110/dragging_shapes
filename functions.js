@@ -157,8 +157,8 @@ function startDrag(e) {
   draggedElement = e.target;
   draggedElement.style.position = 'absolute';
   pickedShape = e.target.id;
-  // elemTop = draggedElement.offsetTop;
-  // elemLeft = draggedElement.offsetLeft;
+  elemTop = draggedElement.offsetTop;
+  elemLeft = draggedElement.offsetLeft;
   document.getElementById(pickedShape).style.zIndex = zIndex;
   zIndex++;
   console.log(zIndex);
@@ -175,7 +175,9 @@ function drag(e) {
   }
 }
 
+        var audio = new Audio('assets/outrange.mp3');
 function endDrag() {
+  var audio = new Audio('assets/outrange.mp3');
   if (draggedElement) {
     const rect = draggedElement.getBoundingClientRect();
     const cell = findDropCell(rect);
@@ -198,12 +200,13 @@ function endDrag() {
         var audio = new Audio('assets/drop.mp3');
         audio.play();
       } else {
-        
+        audio.play();
         draggedElement.style.position = 'absolute';
         draggedElement.style.left = elemLeft + 'px';
         draggedElement.style.top = elemTop + 'px';
       }
     } else {
+        audio.play();
       draggedElement.style.position = 'absolute';
       draggedElement.style.left = elemLeft + 'px';
       draggedElement.style.top = elemTop + 'px';
