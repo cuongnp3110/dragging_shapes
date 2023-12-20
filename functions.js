@@ -195,7 +195,7 @@ function endDrag() {
         // Append the dragged element to the cell
         cell.appendChild(draggedElement);
         draggedElement.classList.add("dropped");
-        var audio = new Audio('assets/click.wav');
+        var audio = new Audio('assets/drop.mp3');
         audio.play();
       } else {
         
