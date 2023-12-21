@@ -7,32 +7,138 @@ const boardComplexity = {
 const shapeData = [
     {
         name: "bottomShape",
+        width: 100,
+        height: 200,
         coordinateBalance: [1, 0],
         color: "#ff6384"
     },
     {
+        name: "rightShape",
+        width: 200,
+        height: 100,
+        coordinateBalance: [0, 1],
+        color: "#FF7633"
+    },
+
+
+    {
         name: "curveBottomRShape",
+        width: 200,
+        height: 200,
         coordinateBalance: [1, 1],
         color: "#36a2eb"
     },
     {
+        name: "curveBottomLShape",
+        width: 200,
+        height: 200,
+        coordinateBalance: [1, 1],
+        color: "#36a2eb"
+    },
+    {
+        name: "curveTopRShape",
+        width: 200,
+        height: 200,
+        coordinateBalance: [1, 1],
+        color: "#36a2eb"
+    },
+    {
+        name: "curveTopLShape",
+        width: 200,
+        height: 200,
+        coordinateBalance: [1, 1],
+        color: "#36a2eb"
+    },
+
+
+    {
         name: "crescentRShape",
+        width: 150,
+        height: 200,
         coordinateBalance: [1, 0],
         color: "#ffce56"
     },
     {
+        name: "crescentLShape",
+        width: 150,
+        height: 200,
+        coordinateBalance: [1, 0],
+        color: "#ffce56"
+    },
+    {
+        name: "crescentBShape",
+        width: 200,
+        height: 150,
+        coordinateBalance: [0, 1],
+        color: "#ffce56"
+    },
+    {
+        name: "crescentTShape",
+        width: 200,
+        height: 150,
+        coordinateBalance: [0, 1],
+        color: "#ffce56"
+    },
+
+
+    {
         name: "bottom2Shape",
+        width: 100,
+        height: 300,
         coordinateBalance: [2, 0],
         color: "#9966ff"
     },
     {
+        name: "right2Shape",
+        width: 300,
+        height: 100,
+        coordinateBalance: [0, 2],
+        color: "#9966ff"
+    },
+
+
+    {
         name: "aslantRShape",
+        width: 200,
+        height: 200,
         coordinateBalance: [1, 1],
         color: "#4bc0c0"
     },
     {
+        name: "aslantLShape",
+        width: 200,
+        height: 200,
+        coordinateBalance: [1, 1],
+        color: "#4bc0c0"
+    },
+
+
+    {
         name: "aslant2RShape",
+        width: 200,
+        height: 300,
         coordinateBalance: [2, 1],
+        color: "#FF7633"
+    },
+    {
+        name: "aslant2LShape",
+        width: 200,
+        height: 300,
+        coordinateBalance: [2, 1],
+        color: "#FF7633"
+    },
+    {
+        name: "aslant2BShape",
+        width: 300,
+        height: 200,
+        coordinateBalance: [1, 2],
+        color: "#FF7633"
+    },
+    {
+        name: "aslant2TShape",
+        width: 300,
+        height: 200,
+        coordinateBalance: [1, 2],
         color: "#FF7633"
     },
 ]
@@ -537,57 +643,43 @@ const templateData = [
     },
 ];
 
+let draggedElement = null;
+let elemTop, elemLeft;
+let pickedShape;
+let zIndex = 100;
+let level = 3;
+let complexity = boardComplexity.easy;
+let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
 
-const shapeRect = [
-    {
-      name: "bottomShape",
-      rect: {
-        top: getRectTop("bottomShape"),
-        left: getRectLeft("bottomShape"),
-      }
-    },
-    {
-      name: "curveBottomRShape",
-      rect: {
-        top: getRectTop("curveBottomRShape"),
-        left: getRectLeft("curveBottomRShape"),
-      }
-    },
-    {
-      name: "crescentRShape",
-      rect: {
-        top: getRectTop("crescentRShape"),
-        left: getRectLeft("crescentRShape"),
-      }
-    },
-    {
-      name: "bottom2Shape",
-      rect: {
-        top: getRectTop("bottom2Shape"),
-        left: getRectLeft("bottom2Shape"),
-      }
-    },
-    {
-      name: "aslantRShape",
-      rect: {
-        top: getRectTop("aslantRShape"),
-        left: getRectLeft("aslantRShape"),
-      }
-    },
-    {
-      name: "aslant2RShape",
-      rect: {
-        top: getRectTop("aslant2RShape"),
-        left: getRectLeft("aslant2RShape"),
-      }
-    }
-  ]
+let shape = [];
+let
+    bottomShape,
+    rightShape,
+    curveBottomRShape,
+    curveBottomLShape,
+    curveTopRShape,
+    curveTopLShape,
+    crescentRShape,
+    crescentLShape,
+    crescentBShape,
+    crescentTShape,
+    bottom2Shape,
+    right2Shape,
+    aslantRShape,
+    aslantLShape,
+    aslant2RShape,
+    aslant2LShape,
+    aslant2BShape,
+    aslant2TShape;
 
-function getRectTop(shape) {
-    return document.getElementById(shape).getBoundingClientRect().top;
-}
-function getRectLeft(shape) {
-    return document.getElementById(shape).getBoundingClientRect().left;
+var shapeRect = [];
+const board = findId('board');
+
+
+//shorten the code findId by findId
+function findId(id) {
+    return document.getElementById(id);
 }
 
 const boardCells = [];
+

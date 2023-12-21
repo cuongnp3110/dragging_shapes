@@ -1,22 +1,413 @@
+function listShape(level, mode){
+  const itemContainer = findId("item");
+  const shapeList = templateData.find(e => e.mode === mode).templates[level - 1].shapes;
+  console.log(shapeList);
+
+  itemContainer.innerHTML = '';
+
+  shapeList.forEach(shapeList => {
+    var shapeContainer = document.createElement('div');
+    shapeContainer.className = 'shape-container';
+    shapeContainer.id = shapeList.name + "Container";
+    shapeContainer.width = shapeData.find(e => e.name === shapeList.name).width;
+    shapeContainer.height = shapeData.find(e => e.name === shapeList.name).height;
+
+    var canvas = document.createElement('canvas');
+    canvas.id = shapeList.name;
+    canvas.width = shapeData.find(e => e.name === shapeList.name).width; // Set your desired width
+    canvas.height = shapeData.find(e => e.name === shapeList.name).height; // Set your desired height
+    shapeContainer.appendChild(canvas);
+    itemContainer.appendChild(shapeContainer);
+  })
+
+  bottomShape =       shapeList.find(e => e.name === "bottomShape")       != null? findId("bottomShape")      : null;
+  rightShape =        shapeList.find(e => e.name === "rightShape")        != null? findId("rightShape")       : null;
+  curveBottomRShape = shapeList.find(e => e.name === "curveBottomRShape") != null? findId("curveBottomRShape"): null;
+  curveBottomLShape = shapeList.find(e => e.name === "curveBottomLShape") != null? findId("curveBottomLShape"): null;
+  curveTopRShape =    shapeList.find(e => e.name === "curveTopRShape")    != null? findId("curveTopRShape")   : null;
+  curveTopLShape =    shapeList.find(e => e.name === "curveTopLShape")    != null? findId("curveTopLShape")   : null;
+  crescentRShape =    shapeList.find(e => e.name === "crescentRShape")    != null? findId("crescentRShape")   : null;
+  crescentLShape =    shapeList.find(e => e.name === "crescentLShape")    != null? findId("crescentLShape")   : null;
+  crescentBShape =    shapeList.find(e => e.name === "crescentBShape")    != null? findId("crescentBShape")   : null;
+  crescentTShape =    shapeList.find(e => e.name === "crescentTShape")    != null? findId("crescentTShape")   : null;
+  bottom2Shape =      shapeList.find(e => e.name === "bottom2Shape")      != null? findId("bottom2Shape")     : null;
+  right2Shape =       shapeList.find(e => e.name === "right2Shape")       != null? findId("right2Shape")      : null;
+  aslantRShape =      shapeList.find(e => e.name === "aslantRShape")      != null? findId("aslantRShape")     : null;
+  aslantLShape =      shapeList.find(e => e.name === "aslantLShape")      != null? findId("aslantLShape")     : null;
+  aslant2RShape =     shapeList.find(e => e.name === "aslant2RShape")     != null? findId("aslant2RShape")    : null;
+  aslant2LShape =     shapeList.find(e => e.name === "aslant2LShape")     != null? findId("aslant2LShape")    : null;
+
+  shape.push(bottomShape,
+    rightShape,
+    curveBottomRShape,
+    curveBottomLShape,
+    curveTopRShape,
+    curveTopLShape,
+    crescentRShape,
+    crescentLShape,
+    crescentBShape,
+    crescentTShape,
+    bottom2Shape,
+    right2Shape,
+    aslantRShape,
+    aslantLShape,
+    aslant2RShape,
+    aslant2LShape,
+    aslant2BShape,
+    aslant2TShape);
+    
+  eventList();
+  triggerDraw();
+}
 
 
-let draggedElement = null;
-let elemTop, elemLeft;
-let pickedShape;
-let zIndex = 100;
-let level = 1;
-let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
+function drawBottomShape() {
+  if(bottomShape != null) {
+    const ctx = bottomShape.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(bottomShape.width / 2, bottomShape.height / 4, 25, 0, 2 * Math.PI);
+    ctx.arc(bottomShape.width / 2, (bottomShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fillStyle = '#ff6384'; // Set the fill color
+    ctx.fill();
+    ctx.fillRect(25, 50, bottomShape.width - 50, bottomShape.height - 100);
+  }
+}
 
-//shorten the code document.getElementById by findId
-function findId(id) {
-  return document.getElementById(id);
+function drawRightShape() {
+  if(rightShape != null) {
+    const ctx = rightShape.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(rightShape.width / 4, rightShape.height / 2, 25, 0, 2 * Math.PI);
+    ctx.arc((rightShape.height / 2) * 3, rightShape.width / 4, 25, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.fillStyle = '#FF6F61 '; // Set the fill color
+    ctx.fill();
+    ctx.fillRect(50, 25, rightShape.width - 100, rightShape.height - 50);
+  }
+}
+
+function drawCurveBottomRShape() {
+  const ctx = curveBottomRShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(curveBottomRShape.width / 4, curveBottomRShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((curveBottomRShape.width / 4) * 3, (curveBottomRShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(150, 50, 125, 0.5 * Math.PI, 1 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#36a2eb';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(150, 50, 74, 0.5 * Math.PI, 1 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCurveBottomLShape() {
+  const ctx = curveBottomLShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(curveBottomLShape.width / 4, curveBottomLShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((curveBottomLShape.width / 4) * 3, (curveBottomLShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(150, 50, 125, 0.5 * Math.PI, 1 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#40E0D0  ';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(150, 50, 74, 0.5 * Math.PI, 1 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCurveTopRShape() {
+  const ctx = curveTopRShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(curveTopRShape.width / 4, curveTopRShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((curveTopRShape.width / 4) * 3, (curveTopRShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(150, 50, 125, 0.5 * Math.PI, 1 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#FF6347 ';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(150, 50, 74, 0.5 * Math.PI, 1 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCurveTopLShape() {
+  const ctx = curveTopLShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(curveTopLShape.width / 4, curveTopLShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((curveTopLShape.width / 4) * 3, (curveTopLShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(150, 50, 125, 0.5 * Math.PI, 1 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#00FA9A ';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(150, 50, 74, 0.5 * Math.PI, 1 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+
+
+function drawCrescentRShape() {
+  const ctx = crescentRShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(crescentRShape.width / 3, crescentRShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentRShape.width / 3, (crescentRShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentRShape.width / 3, crescentRShape.height / 2, 75, 1.5 * Math.PI, 2.5 * Math.PI);
+
+  ctx.fillStyle = '#ffce56'; // Set the fill color
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(50, 100, 27, 0, 2 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCrescentLShape() {
+  const ctx = crescentLShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(crescentLShape.width / 3, crescentLShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentLShape.width / 3, (crescentLShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentLShape.width / 3, crescentLShape.height / 2, 75, 1.5 * Math.PI, 2.5 * Math.PI);
+
+  ctx.fillStyle = '#FF69B4 '; // Set the fill color
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(50, 100, 27, 0, 2 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCrescentBShape() {
+  const ctx = crescentBShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(crescentBShape.width / 4, crescentBShape.height / 3, 25, 0, 2 * Math.PI);
+  ctx.arc((crescentBShape.height / 3) * 3, crescentBShape.height / 3, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentBShape.width / 2, crescentBShape.height / 3, 75, 2 * Math.PI, 1 * Math.PI);
+
+  ctx.fillStyle = '#20B2AA '; // Set the fill color
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(100, 50, 27, 0, 2 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawCrescentTShape() {
+  const ctx = crescentTShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(crescentTShape.width / 4, crescentTShape.height / 3, 25, 0, 2 * Math.PI);
+  ctx.arc((crescentTShape.height / 3) * 3, crescentTShape.height / 3, 25, 0, 2 * Math.PI);
+  ctx.arc(crescentTShape.width / 2, crescentTShape.height / 3, 75, 2 * Math.PI, 1 * Math.PI);
+
+  ctx.fillStyle = '#FFA07A '; // Set the fill color
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(100, 50, 27, 0, 2 * Math.PI);
+  ctx.clip();
+  ctx.clearRect(0, 0, 200, 200);
+}
+
+function drawBottom2Shape() {
+  const ctx = bottom2Shape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(bottom2Shape.width / 2, bottom2Shape.height / 6, 25, 0, 2 * Math.PI);
+  ctx.arc(bottom2Shape.width / 2, (bottom2Shape.height / 6) * 5, 25, 0, 2 * Math.PI);
+  ctx.closePath();
+  ctx.fillStyle = '#9966ff'; // Set the fill color
+  ctx.fill();
+
+  ctx.fillRect(25, 50, bottom2Shape.width - 50, bottom2Shape.height - 100);
+}
+
+function drawRight2Shape() {
+  const ctx = right2Shape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(right2Shape.width / 6, right2Shape.height / 2, 25, 0, 2 * Math.PI);
+  ctx.arc((right2Shape.width / 6) * 5, (right2Shape.height / 2) , 25, 0, 2 * Math.PI);
+  ctx.closePath();
+  ctx.fillStyle = '#FF8C00'; // Set the fill color
+  ctx.fill();
+
+  ctx.fillRect(50, 25, right2Shape.width - 100, right2Shape.height - 50);
+}
+
+function drawAslantRShape() {
+  const ctx = aslantRShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslantRShape.width / 4, aslantRShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((aslantRShape.width / 4) * 3, (aslantRShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#00CED1';
+  ctx.fill();
+  // ctx.fillRect(25, 50, 50, 100);
+  ctx.rotate(Math.PI / 4);
+
+  //Pythago segment
+  ctx.fillRect(Math.sqrt(((aslantRShape.width / 4) ** 2) + ((aslantRShape.height / 4) ** 2)), -25, Math.sqrt(((aslantRShape.width / 2) ** 2) + ((aslantRShape.height / 2) ** 2)), 50);
+}
+
+function drawAslantLShape() {
+  const ctx = aslantLShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslantLShape.width / 4, aslantLShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((aslantLShape.width / 4) * 3, (aslantLShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#87CEEB';
+  ctx.fill();
+  // ctx.fillRect(25, 50, 50, 100);
+  ctx.rotate(Math.PI / 4);
+
+  //Pythago segment
+  ctx.fillRect(Math.sqrt(((aslantLShape.width / 4) ** 2) + ((aslantLShape.height / 4) ** 2)), -25, Math.sqrt(((aslantRShape.width / 2) ** 2) + ((aslantRShape.height / 2) ** 2)), 50);
+}
+
+function drawAslant2RShape() {
+  const ctx = aslant2RShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslant2RShape.width / 4, aslant2RShape.height / 6, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2RShape.width / 4) * 3, (aslant2RShape.height / 6) * 5, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#FF7633';
+  ctx.fill();
+  //Trigonometric
+  ctx.rotate(1.108);
+  //Pythago segment
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -47.6, Math.sqrt((100**2) + (200**2)), 50);
+}
+
+function drawAslant2LShape() {
+  const ctx = aslant2LShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslant2LShape.width / 4, aslant2LShape.height / 6, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2LShape.width / 4) * 3, (aslant2LShape.height / 6) * 5, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#00FF00   ';
+  ctx.fill();
+  //Trigonometric
+  ctx.rotate(1.108);
+  //Pythago segment
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -47.6, Math.sqrt((100**2) + (200**2)), 50);
+}
+
+function drawAslant2BShape() {
+  const ctx = aslant2BShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslant2BShape.width / 6, aslant2BShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2BShape.width / 6) * 5, (aslant2BShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#98FB98';
+  ctx.fill();
+  //Trigonometric
+  ctx.rotate(0.465);
+  //Pythago segment
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -3, Math.sqrt((100**2) + (200**2)), 50);
+}
+
+function drawAslant2TShape() {
+  const ctx = aslant2TShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslant2TShape.width / 6, aslant2TShape.height / 4, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2TShape.width / 6) * 5, (aslant2TShape.height / 4) * 3, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#FFB6C1';
+  ctx.fill();
+  //Trigonometric
+  ctx.rotate(0.465);
+  //Pythago segment
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -3, Math.sqrt((100**2) + (200**2)), 50);
+}
+
+function drawAslant2RShape() {
+  const ctx = aslant2RShape.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(aslant2RShape.width / 4, aslant2RShape.height / 6, 25, 0, 2 * Math.PI);
+  ctx.arc((aslant2RShape.width / 4) * 3, (aslant2RShape.height / 6) * 5, 25, 0, 2 * Math.PI);
+
+  ctx.closePath();
+  ctx.fillStyle = '#FF7633';
+  ctx.fill();
+  //Trigonometric
+  ctx.rotate(1.108);
+  //Pythago segment
+  ctx.fillRect(Math.sqrt((50**2) + (100**2)) * 0 + 62, -47.6, Math.sqrt((100**2) + (200**2)), 50);
+}
+
+function createBoard(complexity) {
+  complexity = complexity == undefined ? 3 : complexity;
+  board.style.gridTemplateColumns = `repeat(${complexity}, 1fr)`;
+  board.style.width = 100 * complexity + "px";
+  board.style.height = 100 * complexity + "px";
+  board.innerHTML = '';
+  for (let i = 0; i < complexity; i++) {
+    for (let j = 0; j < complexity; j++) {
+      const cell = document.createElement('div');
+      cell.classList.add('board-cell');
+      cell.dataset.row = i;
+      cell.dataset.col = j;
+      board.appendChild(cell);
+
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      cell.appendChild(dot);
+
+      boardCells.push(cell);
+    }
+  }
+}
+
+createBoard();
+listShape(level, mode);
+
+function triggerDraw(){
+  bottomShape != null ? drawBottomShape() : 0;
+  rightShape != null ? drawRightShape() : 0;
+  
+  curveBottomRShape != null ? drawCurveBottomRShape() : 0;
+  curveBottomLShape != null ? drawCurveBottomLShape() : 0;
+  curveTopRShape != null ? drawCurveTopRShape() : 0;
+  curveTopLShape != null ? drawCurveTopLShape() : 0;
+  
+  crescentRShape != null ? drawCrescentRShape() : 0;
+  crescentLShape != null ? drawCrescentLShape() : 0;
+  crescentBShape != null ? drawCrescentBShape() : 0;
+  crescentTShape != null ? drawCrescentTShape() : 0;
+  
+  bottom2Shape != null ? drawBottom2Shape() : 0;
+  right2Shape != null ? drawRight2Shape() : 0;
+  
+  aslantRShape != null ? drawAslantRShape() : 0;
+  aslantLShape != null ? drawAslantLShape() : 0;
+  
+  aslant2RShape != null ? drawAslant2RShape() : 0;
+  aslant2LShape != null ? drawAslant2LShape() : 0;
+  aslant2BShape != null ? drawAslant2BShape() : 0;
+  aslant2TShape != null ? drawAslant2TShape() : 0;
 }
 
 //popup for winning
 function openWinningPopup() {
   findId('popup').style.display = 'block';
 }
-
 
 //close popup
 function closeWinningPopup() {
@@ -40,37 +431,72 @@ function changeLevel(modeVal) {
   findId('mode').innerText = mode;
   findId("startMenu").style.display = 'none';
   findId("level").innerText = level;
+  shape = [];
+  shapeRect = [];
+  listShape(level, mode);
+  concatShapeRect();
+}
+
+function concatShapeRect(){
+  var shapeFiltered = shape.filter(function(e) { return e != null; });
+  shapeFiltered.forEach(e => {
+    let tempArr = [];
+    tempArr.push(e.id);
+    tempArr.push(e.getBoundingClientRect().top);
+    tempArr.push(e.getBoundingClientRect().left);
+    shapeRect.push(tempArr);
+    console.log(shapeRect);
+  })
+}
+
+concatShapeRect();
+
+function getValueByShape(arr, shapeName, direct) {
+  for (var i = 0; i < arr.length; i++) {
+    var shape = arr[i][0];
+    if (shape === shapeName) {
+      if(direct == 1)
+        return arr[i][1];
+      else
+        return arr[i][2];
+    }
+  }
+  return null;
 }
 
 //reset coordinate of shapes
 function reset() {
   var audio = new Audio('assets/reset.mp3');
   audio.play();
-  shapeRect.forEach(shapeRect => {
-      const shapeTag = findId(shapeRect.name);
-      findId(shapeRect.name).remove();
-      findId(shapeRect.name + "Container").appendChild(shapeTag);
-      console.log(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
-      resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
-      shapeTag.classList.remove("dropped");
-    }
-  )
+  const droppedElements = document.querySelectorAll(".dropped");
+  droppedElements.forEach(e => {
+      console.log(e);
+      e.remove();
+      findId(e.id + "Container").appendChild(e);
+      resetShapePosition(e.id, getValueByShape(shapeRect, e.id, 2), getValueByShape(shapeRect, e.id, 1));
+      console.log(getValueByShape(shapeRect, e.id, 1));
+  });
   findId('popupMenuWarning').style.display = 'none';
+  
+  // shapeRect = [];
 }
 
 //set up new level when user win previous game
 function reDrawNewLevel() {
+  const droppedElements = document.querySelectorAll(".dropped");
   findId('template').src = templateData.find(e => e.mode === mode).templates[level - 1].url;
-  shapeRect.forEach(shapeRect => {
-    const shapeTag = findId(shapeRect.name);
-    findId(shapeRect.name).remove();
-    findId(shapeRect.name + "Container").appendChild(shapeTag);
-    resetShapePosition(shapeRect.name, shapeRect.rect.left, shapeRect.rect.top);
-    shapeTag.classList.remove("dropped");
-  })
+  droppedElements.forEach(e => {
+    console.log(e);
+    e.remove();
+    findId(e.id + "Container").appendChild(e);
+    resetShapePosition(e.id, getValueByShape(shapeRect, e.id, 2), getValueByShape(shapeRect, e.id, 1));
+    console.log(getValueByShape(shapeRect, e.id, 1));
+  });
+  shape = [];
+  shapeRect = [];
 }
 
-//show wanring popup before send to main menu
+//show warning popup before send to main menu
 function openMenuWarningPopup() {
   findId("popupMenuWarning").style.display = 'block';
 }
@@ -134,8 +560,6 @@ function submit() {
   if (flag) {
     var audio = new Audio('assets/win.mp3');
     audio.play();
-
-    //check when winning entire mode
     if (level == templateData.find(e => e.mode === mode).templates.length) {
       openWinningPopup(); 
       zIndex = 100;
@@ -169,6 +593,8 @@ function closePassLevelPopup(){
   reDrawNewLevel();
   findId('popupPassLevel').style.display = "none";
   findId('level').innerText = level;
+  listShape(level, mode);
+  concatShapeRect();
 }
 
 //reset shape position
@@ -179,11 +605,12 @@ function resetShapePosition(shapeId, left, top) {
   shape.style.top = `${top}px`;
 }
 
-function getDataForShape(e) {
+function getCoorForShape(e) {
   for (const shape of shapeData) {
     if (shape.name === e) return shape.coordinateBalance;
   }
 }
+
 
 
 function startDrag(e) {
@@ -219,14 +646,23 @@ function endDrag() {
       const col = cell.dataset.col;
       
       //cover cases that shape stay some of it part out board
-      if (parseInt(row) + getDataForShape(pickedShape)[0] < complexity && parseInt(col) + getDataForShape(pickedShape)[1] < complexity) {
+      if (parseInt(row) + getCoorForShape(pickedShape)[0] < complexity && parseInt(col) + getCoorForShape(pickedShape)[1] < complexity) {
         console.log(`Dropped at row: ${row}, col: ${col}`);
 
         //set the position relative to the cell
         const cellRect = cell.getBoundingClientRect();
-        draggedElement.style.left = `${cellRect.left}px`;
-        draggedElement.style.top = `${cellRect.top}px`;
-
+        console.log(draggedElement.id);
+        // let balancerTop, balancerLeft = 0;
+        if(draggedElement.id == "crescentLShape") {
+          draggedElement.style.left = `${cellRect.left - 50}px`;
+          draggedElement.style.top = `${cellRect.top}px`;
+        } else if(draggedElement.id == "crescentTShape") {
+          draggedElement.style.left = `${cellRect.left}px`;
+          draggedElement.style.top = `${cellRect.top - 50}px`;
+        } else {
+          draggedElement.style.left = `${cellRect.left}px`;
+          draggedElement.style.top = `${cellRect.top}px`;
+        }
         //append the dragged element to the cell
         cell.appendChild(draggedElement);
         draggedElement.classList.add("dropped");
@@ -261,24 +697,22 @@ function findDropCell(rect) {
   });
 }
 
-bottomShape.addEventListener('mousedown', startDrag);
-curveBottomRShape.addEventListener('mousedown', startDrag);
-crescentRShape.addEventListener('mousedown', startDrag);
-bottom2Shape.addEventListener('mousedown', startDrag);
-aslantRShape.addEventListener('mousedown', startDrag);
-aslant2RShape.addEventListener('mousedown', startDrag);
+function eventList(){
+  shape.forEach(e => {
+    if(e != null)
+      e.addEventListener('mousedown', startDrag);
+  })
+  shape.forEach(e => {
+    if(e != null)
+      e.addEventListener('touchstart', startDrag);
+  })
+}
+eventList();
 
 document.addEventListener('mousemove', drag);
 document.addEventListener('mouseup', endDrag);
 
 //mobile/touch support
-bottomShape.addEventListener('touchstart', startDrag);
-curveBottomRShape.addEventListener('touchstart', startDrag);
-crescentRShape.addEventListener('touchstart', startDrag);
-bottom2Shape.addEventListener('touchstart', startDrag);
-aslantRShape.addEventListener('touchstart', startDrag);
-aslant2RShape.addEventListener('touchstart', startDrag);
-
 document.addEventListener('touchmove', (e) => {
   e.preventDefault(); //prevent scrolling while dragging on mobile
   drag(e.touches[0]);
@@ -315,3 +749,5 @@ function onMusic(){
   findId('v_on').style.display = 'none';
   findId('v_off').style.display = 'block';
 }
+
+// Copyright (c) 2023 cuongnp3110. All rights reserved.
