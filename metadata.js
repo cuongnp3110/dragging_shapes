@@ -647,7 +647,7 @@ let draggedElement = null;
 let elemTop, elemLeft;
 let pickedShape;
 let zIndex = 100;
-let level = 3;
+let level = 1;
 let complexity = boardComplexity.easy;
 let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
 
