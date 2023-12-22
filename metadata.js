@@ -650,6 +650,7 @@ let zIndex = 100;
 let level = 1;
 let complexity = boardComplexity.easy;
 let mode = complexity == 3 ? "dễ" : complexity == 4 ? "trung bình" : "khó";
+let expander = mode == "dễ" ? 1.5 : mode == "trung bình" ? 1.2 : 1;
 
 let shape = [];
 let
