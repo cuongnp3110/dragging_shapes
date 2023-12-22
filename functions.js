@@ -710,33 +710,33 @@ document.addEventListener('touchend', endDrag);
 
 
 //trigger music
-// document.addEventListener('click', function() {
-//   var audio = new Audio('assets/click.mp3');
-//   audio.play();
-// });
+document.addEventListener('click', function() {
+  var audio = new Audio('assets/click.mp3');
+  audio.play();
+});
 
 
-// let m = 0;
-// document.addEventListener('click', function() {
-//   if(m == 0){
-//     var backgroundMusic = findId('backgroundMusic');
-//     backgroundMusic.play();
-//     m = 1;
-//   }
-// });
+let m = 0;
+document.addEventListener('click', function() {
+  if(m == 0){
+    var backgroundMusic = findId('backgroundMusic');
+    backgroundMusic.play();
+    m = 1;
+  }
+});
 
-// function offMusic(){
-//   var backgroundMusic = findId('backgroundMusic');
-//   backgroundMusic.pause();
-//   findId('v_on').style.display = 'block';
-//   findId('v_off').style.display = 'none';
-// }
+function offMusic(){
+  var backgroundMusic = findId('backgroundMusic');
+  backgroundMusic.pause();
+  findId('v_on').style.display = 'block';
+  findId('v_off').style.display = 'none';
+}
 
-// function onMusic(){
-//   var backgroundMusic = findId('backgroundMusic');
-//   backgroundMusic.play();
-//   findId('v_on').style.display = 'none';
-//   findId('v_off').style.display = 'block';
-// }
+function onMusic(){
+  var backgroundMusic = findId('backgroundMusic');
+  backgroundMusic.play();
+  findId('v_on').style.display = 'none';
+  findId('v_off').style.display = 'block';
+}
 
 // Copyright (c) 2023 cuongnp3110. All rights reserved.
