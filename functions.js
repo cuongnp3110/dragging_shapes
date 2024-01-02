@@ -32,7 +32,7 @@ function listShape(level, mode){
   crescentBShape =    shapeList.find(e => e.name === "crescentBShape")    != null? document.querySelectorAll("#crescentBShape")   : null;
   crescentTShape =    shapeList.find(e => e.name === "crescentTShape")    != null? document.querySelectorAll("#crescentTShape")   : null;
   bottom2Shape =      shapeList.find(e => e.name === "bottom2Shape")      != null? document.querySelectorAll("#bottom2Shape")     : null;
-  right2Shape =       shapeList.find(e => e.name === "right2Shape")       != null? document.querySelectorAll("#right2Shape"): null;
+  right2Shape =       shapeList.find(e => e.name === "right2Shape")       != null? document.querySelectorAll("#right2Shape")      : null;
   aslantRShape =      shapeList.find(e => e.name === "aslantRShape")      != null? document.querySelectorAll("#aslantRShape")     : null;
   aslantLShape =      shapeList.find(e => e.name === "aslantLShape")      != null? document.querySelectorAll("#aslantLShape")     : null;
   aslant2RShape =     shapeList.find(e => e.name === "aslant2RShape")     != null? document.querySelectorAll("#aslant2RShape")    : null;
@@ -182,7 +182,7 @@ function drawCurveTopLShape() {
 function drawCrescentRShape() {
   const getAllDuplicatesElement = document.querySelectorAll("#crescentRShape");
   getAllDuplicatesElement.forEach(e => {
-    const ctx = crescentRShape.getContext('2d');
+    const ctx = e.getContext('2d');
     ctx.beginPath();
     ctx.arc(e.width / 3, e.height / 4, 25 * expander, 0, 2 * Math.PI);
     ctx.arc(e.width / 3, (e.height / 4) * 3, 25 * expander, 0, 2 * Math.PI);
@@ -334,7 +334,7 @@ function drawAslantLShape() {
 function drawAslant2RShape() {
   const getAllDuplicatesElement = document.querySelectorAll("#aslant2RShape");
   getAllDuplicatesElement.forEach(e => {
-    const ctx = aslant2RShape.getContext('2d');
+    const ctx = e.getContext('2d');
     ctx.beginPath();
     ctx.arc(e.width / 4, e.height / 6, 25 * expander, 0, 2 * Math.PI);
     ctx.arc((e.width / 4) * 3, (e.height / 6) * 5, 25 * expander, 0, 2 * Math.PI);
@@ -499,10 +499,9 @@ function changeLevel(modeVal) {
 function concatShapeRect(){
   var shapeFiltered = shape.filter(function(e) { return e != null; });
   console.log(shapeFiltered)
-  // debugger
   shapeFiltered.forEach(e => {
     let tempArr = [];
-    if(e.length > 1){
+    if(e.length >= 1){
       let subArr = [];
       for (let i = 0; i < e.length; i++) {
         tempArr.push(e[i].id);

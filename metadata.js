@@ -327,113 +327,17 @@ const templateData = [
                 url: "easy/e6.png",
                 shapes: [
                     {
-                        name: "bottomShape",
-                        coordinateBalance: [1, 0],
+                        name: "aslant2RShape",
+                        coordinate: [1, 0]
                     },
                     {
-                        name: "bottomShape",
-                        coordinateBalance: [1, 0],
+                        name: "aslant2LShape",
+                        coordinate: [0, 0]
                     },
                     {
-                        name: "rightShape",
-                        coordinateBalance: [0, 1],
+                        name: "right2Shape",
+                        coordinate: [0, 1]
                     },
-                    // {
-                    //     name: "rightShape",
-                    //     coordinateBalance: [0, 1],
-                    // },
-                
-                
-                    // {
-                    //     name: "crescentRShape",
-                    //     width: 150,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 0],
-                    //     color: "#ffce56"
-                    // },
-                    // {
-                    //     name: "crescentLShape",
-                    //     width: 150,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 0],
-                    //     color: "#ffce56"
-                    // },
-                    // {
-                    //     name: "crescentBShape",
-                    //     width: 200,
-                    //     height: 150,
-                    //     coordinateBalance: [0, 1],
-                    //     color: "#ffce56"
-                    // },
-                    // {
-                    //     name: "crescentTShape",
-                    //     width: 200,
-                    //     height: 150,
-                    //     coordinateBalance: [0, 1],
-                    //     color: "#ffce56"
-                    // },
-                
-                
-                    // {
-                    //     name: "bottom2Shape",
-                    //     width: 100,
-                    //     height: 300,
-                    //     coordinateBalance: [2, 0],
-                    //     color: "#9966ff"
-                    // },
-                    // {
-                    //     name: "right2Shape",
-                    //     width: 300,
-                    //     height: 100,
-                    //     coordinateBalance: [0, 2],
-                    //     color: "#9966ff"
-                    // },
-                
-                
-                    // {
-                    //     name: "aslantRShape",
-                    //     width: 200,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 1],
-                    //     color: "#4bc0c0"
-                    // },
-                    // {
-                    //     name: "aslantLShape",
-                    //     width: 200,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 1],
-                    //     color: "#4bc0c0"
-                    // },
-                
-                
-                    // {
-                    //     name: "aslant2RShape",
-                    //     width: 200,
-                    //     height: 300,
-                    //     coordinateBalance: [2, 1],
-                    //     color: "#FF7633"
-                    // },
-                    // {
-                    //     name: "aslant2LShape",
-                    //     width: 200,
-                    //     height: 300,
-                    //     coordinateBalance: [2, 1],
-                    //     color: "#FF7633"
-                    // },
-                    // {
-                    //     name: "aslant2BShape",
-                    //     width: 300,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 2],
-                    //     color: "#FF7633"
-                    // },
-                    // {
-                    //     name: "aslant2TShape",
-                    //     width: 300,
-                    //     height: 200,
-                    //     coordinateBalance: [1, 2],
-                    //     color: "#FF7633"
-                    // },
                 ],
                 specialties: [
                     ["aslant2LShape", "aslant2RShape"],
