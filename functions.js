@@ -772,13 +772,14 @@ function findDropCell(rect) {
 function eventList(){
   shape.forEach(e => {
     if(e != null){
-      if(e.length > 1) for(let i = 0; i < e.length; i++) e[i].addEventListener('mousedown', startDrag);
+      if(e.length >= 1) for(let i = 0; i < e.length; i++) e[i].addEventListener('mousedown', startDrag);
       else e.addEventListener('mousedown', startDrag);
     }
   })
+
   shape.forEach(e => {
     if(e != null){
-      if(e.length > 1) for(let i = 0; i < e.length; i++) e[i].addEventListener('touchstart', startDrag);
+      if(e.length >= 1) for(let i = 0; i < e.length; i++) e[i].addEventListener('touchstart', startDrag);
       else e.addEventListener('touchstart', startDrag);
     }
   })

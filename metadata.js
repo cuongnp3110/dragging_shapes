@@ -338,24 +338,10 @@ const templateData = [
                         name: "rightShape",
                         coordinateBalance: [0, 1],
                     },
-                
-                
-                    {
-                        name: "curveBottomRShape",
-                        coordinateBalance: [1, 1],
-                    },
-                    {
-                        name: "curveBottomLShape",
-                        coordinateBalance: [1, 1],
-                    },
-                    {
-                        name: "curveTopRShape",
-                        coordinateBalance: [1, 1],
-                    },
-                    {
-                        name: "curveTopLShape",
-                        coordinateBalance: [1, 1],
-                    },
+                    // {
+                    //     name: "rightShape",
+                    //     coordinateBalance: [0, 1],
+                    // },
                 
                 
                     // {
